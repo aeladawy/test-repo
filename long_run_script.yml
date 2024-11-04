@@ -1,0 +1,12 @@
+---
+- name: Check long running script
+  hosts: all
+  tasks:
+    - name: Launch bash script
+      shell: |
+        sleep 1h 10m
+        echo "finished" >> /tmp/tst.log
+      args:
+        executable: /bin/bash
+      async: 0
+      poll: 0
